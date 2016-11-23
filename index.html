@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <base target="_top">
+    <link rel=stylesheet href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+
+    <style>
+        body {
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+
+        main {
+            flex: 1 0 auto;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <h1> Putzparty Manager </h1>
+    </div>
+</header>
+<main>
+
+    <div class="container">
+
+        <!-- API interaction -->
+        <div class="row">
+            <h3> API access </h3>
+            <div class="col s12">
+                <a class="waves-effect waves-light btn js--load-data">load spreadsheet data</a>
+                <a class="waves-effect waves-light btn js--send-mail">send a mail</a>
+            </div>
+
+            <div class="col s12">
+                <ul class="collection js--api-results">
+                    <li class="collection-item">empty</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+</main>
+<footer class="page-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">Your Putzplan Management Team</h5>
+                <p class="grey-text text-lighten-4">Visit our awesome new <a href='https://sinnerschrader.com/' target='_blank' >sinnerschrader.com</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright">
+        <div class="container">
+            ©
+            <a class="grey-text text-lighten-4 right" href="#!">More</a>
+        </div>
+    </div>
+</footer>
+<?!= include('scripts'); ?>
+</body>
+</html>

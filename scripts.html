@@ -1,0 +1,49 @@
+<!-- Client scripts must be included as html so you have to use a script tag. You can't include *.gs files. -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+
+<script>
+
+	function generateLogFeedback(message){
+		return function(){
+			console.log(message);
+		}
+	}
+
+
+	function renderSpreadsheetList(data){
+		$('.js--api-results').empty();
+		console.log('received soem results', data);
+
+		var itemList = data.map(function(item){
+			var title = [item.cleaning, item.name, item.music, item.birthday].join( '|');
+			return $('<li class="collection-item"><a href='+ (item.email || '#') +' target="_blank" >'+ title + '</a></li>')
+		})
+
+		$('.js--api-results').append(itemList);
+	}
+
+	// On page load.
+	$(function() {
+		console.log('hello page from jquery');
+
+		$('.js--send-mail').on('click', function(){
+		});
+
+		$('.js--load-data').on('click', function(){
+
+
+			google.script.run
+				.withSuccessHandler(renderSpreadsheetList)
+				.withFailureHandler(generateLogFeedback('nope did not work'))
+				.loadSpreadsheetData();
+		});
+
+	});
+
+
+	document.addEventListener('DOMContentLoaded', function () {
+		console.log('ready to go')
+	});
+
+</script>
